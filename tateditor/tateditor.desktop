@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=TATEditor
+Type=Application
+Terminal=false
+Comment[ja]=縦書きも横書きもできるフリーのテキストエディタ
+Comment=Text editor with vertical/horizontal writing
+GenericName[ja]=テキストエディタ
+GenericName=Text Editor
+Categories=Utility;TextEditor;
+Exec=/opt/tateditor/tateditor
+MimeType=text/plain;

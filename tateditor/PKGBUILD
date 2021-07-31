@@ -1,0 +1,38 @@
+# Maintainer: fabon <syobon.hinata.public[at]gmail[dot]com>
+pkgname=tateditor
+pkgver=3.3.20.120
+pkgdesc="Text editor with vertical/horizontal writing"
+pkgrel=1
+arch=('x86_64' 'i686')
+license=('custom')
+url="https://www.cc4966.net/home"
+depends=()
+makedepends=()
+optdepends=()
+backup=("opt/${pkgname}/TATEditor.ini")
+
+source=("${pkgname}.desktop")
+md5sums=('049a79c4047a20424f03780fdaeaa30f')
+md5sums_x86_64=('f663a80900d0d5a8ed116f6833e6d6f7')
+md5sums_i686=('d4024058172e74476a1e8c512c1c8424')
+
+source_x86_64=("tateditor.tar.gz::https://drive.google.com/uc?export=download&id=1auCdAOm9W661FkCYHNeATwtpehy_V2JI")
+
+source_i686=("tateditor.tar.gz::https://drive.google.com/uc?export=download&id=1P1Qjbkll0aDhkv9XbSlcnjDQX-a35Zzd")
+
+if [ "$CARCH" = "x86_64" ]; then
+  _source_arch="x86_64"
+else
+  _source_arch="i386"
+fi
+
+package() {
+  install -d "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/opt/${pkgname}"
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -RT "${srcdir}/tateditor-gtk3-${_source_arch}" "${pkgdir}/opt/${pkgname}"
+  ln -s "${pkgdir}/opt/${pkgname}/docs" "${pkgdir}/usr/share/licenses/${pkgname}/deps"
+  ln -s "${pkgdir}/opt/${pkgname}/readme.txt" "${pkgdir}/usr/share/licenses/${pkgname}/readme.txt"
+  ln -s "${pkgdir}/opt/${pkgname}/tateditor" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+}
