@@ -9,7 +9,6 @@ url="https://www.cc4966.net/home"
 depends=(gtk3)
 makedepends=()
 optdepends=()
-backup=("opt/${pkgname}/TATEditor.ini")
 
 source=("${pkgname}.desktop")
 md5sums=('049a79c4047a20424f03780fdaeaa30f')
@@ -27,12 +26,10 @@ else
 fi
 
 package() {
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp -RT "${srcdir}/tateditor-gtk3-${_source_arch}" "${pkgdir}/opt/${pkgname}"
-  ln -s "/opt/${pkgname}/docs" "${pkgdir}/usr/share/licenses/${pkgname}/deps"
-  ln -s "/opt/${pkgname}/readme.txt" "${pkgdir}/usr/share/licenses/${pkgname}/readme.txt"
-  ln -s "/opt/${pkgname}/tateditor" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  cat << INSTALL > "${startdir}/install"
+  install -d ~/.local/share/${pkgname}
+  cp -RT ${srcdir}/tateditor-gtk3-${_source_arch} ~/.local/share/${pkgname}
+  install ${srcdir}/${pkgname}.desktop ~/.local/share/applications/${pkgname}.desktop
+INSTALL
+  chmod +x "${startdir}/install"
 }

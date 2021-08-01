@@ -7,5 +7,5 @@ Comment=Text editor with vertical/horizontal writing
 GenericName[ja]=テキストエディタ
 GenericName=Text Editor
 Categories=Utility;TextEditor;
-Exec=/opt/tateditor/tateditor
+Exec=sh -c "~/.local/share/tateditor/tateditor"
 MimeType=text/plain;
