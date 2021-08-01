@@ -31,8 +31,8 @@ package() {
   install -d "${pkgdir}/opt/${pkgname}"
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -RT "${srcdir}/tateditor-gtk3-${_source_arch}" "${pkgdir}/opt/${pkgname}"
-  ln -s "${pkgdir}/opt/${pkgname}/docs" "${pkgdir}/usr/share/licenses/${pkgname}/deps"
-  ln -s "${pkgdir}/opt/${pkgname}/readme.txt" "${pkgdir}/usr/share/licenses/${pkgname}/readme.txt"
-  ln -s "${pkgdir}/opt/${pkgname}/tateditor" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/opt/${pkgname}/docs" "${pkgdir}/usr/share/licenses/${pkgname}/deps"
+  ln -s "/opt/${pkgname}/readme.txt" "${pkgdir}/usr/share/licenses/${pkgname}/readme.txt"
+  ln -s "/opt/${pkgname}/tateditor" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
